@@ -1,0 +1,57 @@
+
+\documentclass{article}
+\usepackage{physics}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[margin=0.75in]{geometry}
+\begin{document}
+\section*{QFT Introduction} 
+\subsection*{Contact Information}
+Prof. Linda Carpenter \\
+Office: M2054 PRB, office hour TBD\\ 
+lmc@physics.osu.edu
+\subsection*{Homework}
+4-5 HW in total, due every 2-3 weeks \\
+Take home final 
+
+\subsection*{Course Structure and Motivation}
+\begin{enumerate}
+ \item Classical Mech- point like massive particles, built off of action $S = \int dt L $ where $L - K -V$. Principle of least action is then applied, and variational method requires $\delta S = 0$. As a result, a trajectory that minimize the action is calculated. The resulting euqation is the Euler- Lagrange equation:
+\begin{equation*}
+  \pdv{L}{x_i} = \dv{t} \pdv{L}{\dot{x}_i}
+\end{equation*}
+In addition to the Lagrangian formulation discussed above, another formulation is the Hamiltonian formulation where we construct Hamiltonian around the conjugate commentum $p_i \equiv \pdv{L}{\dot{q}_i}$, and the Hamiltonian object $H = p_i\dot{q}_i -L$.  \\ 
+For quantity $\theta$, we can calculate the time evolution of $\theta $ by using Possion's bracker $\dot{\theta}= \qty{\theta ,H}$ where $\qty{A,B}= \pdv{A}{q_i}\pdv{B}{p_i}- \pdv{A}{p_i}- \pdv{B}{q_i}$. \\ 
+Anothe important concept for classical mechanics is the phase space, where the phase space is the 2-d distribution of $p $ vs $q$, and the trajectory is the phase-space orbit. \\ 
+\textbf{Note that the processes in classical mechanics are deterministic.}, meaning the time evolutoiin has infinite precision of the position and momentum of the particle.
+
+ \item CFT: For objects that does not behave like point-like masssive particles (light), the classical field theory is creaeted to describe such systems. For those systems, we replace the concept of coordiates $q \to \Phi $ where the latter $\Phi (\vec{x} ,t)$ is valued at every point in space. \\ 
+   The trajectory of the particle is then replaced by the time evolution of $\Phi $. We still accomplish is by using the principle of least action $S = \int \ dt L $, where $L$ is redefined as $L(\Phi,\dot{\Phi},t)$. Effectively, this is a direct replatecement from $q \to \Phi $. In the same light, we can re-define $p \to \Pi \equiv \pdv{L}{\dot{\Phi}}$. We can re-write the E-L theorem:
+   \begin{equation*}
+     \partial_\mu\qty(\pdv{L}{\partial_\mu \Phi }) - \pdv{L}{\Phi } = 0
+   \end{equation*}
+   The differenc here is that the degree of freedom for fields are more complicaed as it is a continous object of all spaces. However, \textbf{this formulation is stil deterministic.}
+ \item Quantum Mech: QM still considers "massive" particles. It can be fairly easily obtained from the classical Hamiltonian formulation. However, the main difference is that the proabblity is not deterministic. Instead of a trajectory, we know consider a quantum state $\ket{\phi} $, which is  a set of quantum numbers, and we consider the time evolution of the quantum states. We still define the Hamiltonian $\hat{H}$ as an operator on vector space. This is given by the Schrodinger equation:
+  \begin{equation*}
+  i \hbar \dv{t} \ket{\phi } = \hat{H} \ket{\phi }
+  \end{equation*}
+  And the eexpectation values of an observable $\theta$, we simply take $\bra{\phi } \theta \ket{\phi }  $ of operator $\theta $, and $\qty[\hat{\theta } , \hat{H} ]$ gives the time evolution of that operator. \\ 
+  Anothere feature of QM is that not all $\theta _i$ can be determined at the same time such as $p_i, x_i$ to an infinite certainty. To determine if comensurability, we simply check if $\qty[\theta_i, \theta _j] = 0$. Therefore, well-defined quantum numbers should be comensurable. \\ 
+  Additionally, one can compute transition probability that a particle go from one state to another state using the Hamiltonian as the time evolution operator by doing $\bra{\phi _2} e^{i \hat{H}t } \ket{\phi _i} $.
+
+\item QFT: The continuum limit of QM: Normal Quantum Mech does not allow for creation and annaliation of particles, which is required by taking the relativistic limit of the quantum mechanics. However, there are clear events in the universe where creation and annaliation processes are needed (e.g. electrons and position collider resulting in $W^+ W^-$ pair.) \\ 
+  The only way to describe changing particle numbers, is to abandon the concept of particles. Instead, the particles are now excitation of a quantum field. \\ 
+  Under a Lorentz transforation, for a electron scattering from a nucleus, we could create the process of a nuclei emits a photon that creates an electron positron pair. \\ 
+  Similiar to Hilbert Space in QM, we create a Fock Space, which is a direct sum of all of the n-particle Hilbert Spaces. \\ 
+  Another issue with the QM is the "causality". $c$ is the ultimate speed in the universe. However, a simple QM computation of state transition can go beyond the speed of light. Therefore, to obey time-like causality, we need QFT. For instance, if we calculate the probablity of a particle propergate from point $\vec{x} \to \vec{y}$, we formulate:
+  \begin{equation*}
+  \bra{y} e^{i \hat{H} t} \ket{x} 
+  \end{equation*} 
+  However, if x and y are so seperated ($>ct$), one should get a 0 transition probablity. However, in traditional QM, the transition probablity is always none-zero.
+\end{enumerate}
+
+
+
+
+
+\end{document}

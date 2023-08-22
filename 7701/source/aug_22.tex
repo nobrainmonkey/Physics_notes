@@ -2,6 +2,7 @@
 \usepackage{physics}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage[margin=0.75in]{geometry}
 \begin{document}
 \section*{Physics 7701 Introduction}
 \subsection*{Maxwell Equations}
@@ -11,7 +12,7 @@ For reference in Jackson, see section i or Zangwill chapter 2. \\
 \vec{\nabla} \cdot  \vec{D} = \rho \to \vec{\nabla} \cdot \vec{E} = \rho /\epsilon_0  
 \end{equation*}
 \begin{equation*}
-  \vec{\nabla} \times   \vec{H}  - \pdv{\vec{D} }{t}= \vec{J}  \to \vec{\nabla} \cdot \vec{B} - \frac{1}{c^2} \pdv{\vec{E} }{t} = \mu_0 \vec{J}    
+  \vec{\nabla} \times   \vec{H}  - \pdv{\vec{D} }{t}= \vec{J}  \to \vec{\nabla} \times  \vec{B} - \frac{1}{c^2} \pdv{\vec{E} }{t} = \mu_0 \vec{J}    
 \end{equation*}
 \begin{equation*}
   \vec{\nabla} \times   \vec{E}  - \pdv{\vec{B} }{t}= 0
@@ -19,7 +20,7 @@ For reference in Jackson, see section i or Zangwill chapter 2. \\
 \begin{equation*}
 \vec{\nabla} \cdot  \vec{B} = 0
 \end{equation*}
-These maxwell euqations  all functions of $\vec{x} ,t$, and are local equations, which means the maxwell equations are evaluated at a small neighborhood around a point $\vec{x}_1$. \\ 
+These Maxwell equations  all functions of $\vec{x} ,t$, and are local equations, which means the Maxwell equations are evaluated at a small neighborhood around a point $\vec{x}_1$. \\ 
 Additionally, we have the Lorentz force equation:
 \begin{equation*}
 \vec{F} = q (\vec{E} + \vec{v} \times \vec{B})
@@ -33,7 +34,7 @@ What is the basic physics principle underlying a ground fault circuit interrupte
 \begin{enumerate}
   \item Charge conservation - if there is current leakage, charge conservation would be broken.
   \item Two current carrying wire with opposite current would have zero effect if the current on the two wires is exact.
-  \item induced current in a coil around the loop of the wires if the current conservation is broken, which triggers the GFCI.
+  \item Induced current in a coil around the loop of the wires if the current conservation is broken, which triggers the GFCI.
 \end{enumerate}
 
 \subsection*{Kronecker Delta and Levi Epsilon}
@@ -45,11 +46,11 @@ Below is the definition for Kronecker Delta
 \end{align*}
 Below is the definition for Levi Epsilon
 \begin{align*}
-  \epsilon_{ijk} = 1 \ \text{if} \ i,j,k \ \text{are cyclic} \\
-  \epsilon_{ijk} = -1 \ \text{if} \ i,j,k \ \text{are anti-cyclic} \\ 
-  \epsilon_{ijk} = 0 \ \text{if} \ i,j,k \ \text{for other cases} \\ 
+  \epsilon_{ijk} &= 1 \ \text{if} \ i,j,k \ \text{are cyclic} \\
+  \epsilon_{ijk} &= -1 \ \text{if} \ i,j,k \ \text{are anti-cyclic} \\ 
+  \epsilon_{ijk} &= 0 \ \text{if} \ i,j,k \ \text{for other cases} \\ 
 \end{align*}
-Using Enistine's sum convention, we can write vector operators such as dot products and cross products using this convention:
+Using Einstein's sum convention, we can write vector operators such as dot products and cross products using this convention:
 \begin{enumerate}
   \item $\vec{A} \cdot \vec{B}  = A_1 B_1 + A_2 B_2 + A_3 B_3 = \sum_{i} A_i B_i = \sum_{i} \sum_{j}A_i \delta_{i j} B_j$
   \item $\qty(\vec{A} \times  \vec{B} )_i=\epsilon_{ijk} A_j B_k $
@@ -60,25 +61,32 @@ Additionally, we can derive some properties of these two special functions:
   \item $\delta_{ii} = 3$
 \end{enumerate}
 With such notation in mind, we can simplify $\vec{\nabla} \times \qty(\vec{\nabla} \times \vec{A}  ) = \vec{\nabla}\qty(\vec{\nabla} \cdot \vec{A} ) - \laplacian \vec{A}$:
-
-
-
-
-
-
-
 \subsection*{Current Conservation}
-Does the principle of the current consevation(or charge conservation) is apparent in the maxwell's equation? \\ 
+Does the principle of the current conservation (or charge conservation) is apparent in the Maxwell's equation? \\ 
 Note that the concept of current conservation is the same as if the following equality is true:
 \begin{equation*}
-  \pdv{\rho}{t} + \vec{\nabla} \cdot  \vec{J} = 0  
+  \pdv{\rho}{t} + \vec{\nabla} \cdot  \vec{J} = 0
 \end{equation*}
 Which indicates that the change in charge density over time has to be explained by a divergence of current. 
 \subsubsection*{Prove}
 From Maxwell's equations, we have:
+\begin{align*}
+  \vec{\nabla} \cdot  E &= \frac{\rho}{\epsilon_0} \tag{1}\\ 
+  \vec{\nabla}  \times  \vec{B} - \frac{1}{c^2} \pdv{\vec{E}}{t} &= \mu_0 \vec{J} \tag{2}
+\end{align*}
+Taking the gradient for both sides of equation $(2)$ gives:
 \begin{equation*}
-  \vec{\nabla} \cdot  E = \frac{\rho}{\epsilon_0}
+  \vec{\nabla } \cdot (\vec{\nabla } \times  \vec{B} )- \frac{1}{c^2}\pdv{t}\vec{\nabla }\cdot \vec{E}  = \mu_0 \vec{\nabla} \cdot  \vec{J} \tag{3}
 \end{equation*}
+Note that you can exchange the order of time derivative and gradient.\\ 
+Combine equation $(3)$ and equation $(1)$, using the identity that $\vec{\nabla} \cdot (\vec{\nabla } \times \vec{B}) = 0 $:
+\begin{equation*}
+  - \frac{1}{c^2 \epsilon_0 \mu_0} \pdv{\rho}{t} =  \vec{\nabla} \cdot \vec{J}    \to \pdv{\rho}{t} + \vec{\nabla}\cdot \vec{J}= 0  
+\end{equation*}
+
+
+
+
 
 
 \end{document}
