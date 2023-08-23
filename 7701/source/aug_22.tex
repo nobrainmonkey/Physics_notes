@@ -37,6 +37,29 @@ What is the basic physics principle underlying a ground fault circuit interrupte
   \item Induced current in a coil around the loop of the wires if the current conservation is broken, which triggers the GFCI.
 \end{enumerate}
 
+\subsection*{Current Conservation}
+Does the principle of the current conservation (or charge conservation) is apparent in the Maxwell's equation? \\ 
+Note that the concept of current conservation is the same as if the following equality is true:
+\begin{equation*}
+  \pdv{\rho}{t} + \vec{\nabla} \cdot  \vec{J} = 0
+\end{equation*}
+Which indicates that the change in charge density over time has to be explained by a divergence of current. 
+\subsubsection*{Prove}
+From Maxwell's equations, we have:
+\begin{align*}
+  \vec{\nabla} \cdot  E &= \frac{\rho}{\epsilon_0} \tag{1}\\ 
+  \vec{\nabla}  \times  \vec{B} - \frac{1}{c^2} \pdv{\vec{E}}{t} &= \mu_0 \vec{J} \tag{2}
+\end{align*}
+Taking the gradient for both sides of equation $(2)$ gives:
+\begin{equation*}
+  \vec{\nabla } \cdot (\vec{\nabla } \times  \vec{B} )- \frac{1}{c^2}\pdv{t}\vec{\nabla }\cdot \vec{E}  = \mu_0 \vec{\nabla} \cdot  \vec{J} \tag{3}
+\end{equation*}
+Note that you can exchange the order of time derivative and gradient.\\ 
+Combine equation $(3)$ and equation $(1)$, using the identity that $\vec{\nabla} \cdot (\vec{\nabla } \times \vec{B}) = 0 $:
+\begin{equation*}
+  - \frac{1}{c^2 \epsilon_0 \mu_0} \pdv{\rho}{t} =  \vec{\nabla} \cdot \vec{J}    \to \pdv{\rho}{t} + \vec{\nabla}\cdot \vec{J}= 0  
+\end{equation*}
+
 \subsection*{Kronecker Delta and Levi Epsilon}
 \subsubsection*{Definitions}
 Below is the definition for Kronecker Delta 
@@ -61,28 +84,23 @@ Additionally, we can derive some properties of these two special functions:
   \item $\delta_{ii} = 3$
 \end{enumerate}
 With such notation in mind, we can simplify $\vec{\nabla} \times \qty(\vec{\nabla} \times \vec{A}  ) = \vec{\nabla}\qty(\vec{\nabla} \cdot \vec{A} ) - \laplacian \vec{A}$:
-\subsection*{Current Conservation}
-Does the principle of the current conservation (or charge conservation) is apparent in the Maxwell's equation? \\ 
-Note that the concept of current conservation is the same as if the following equality is true:
-\begin{equation*}
-  \pdv{\rho}{t} + \vec{\nabla} \cdot  \vec{J} = 0
-\end{equation*}
-Which indicates that the change in charge density over time has to be explained by a divergence of current. 
 \subsubsection*{Prove}
-From Maxwell's equations, we have:
+Let us only consider the $i$ component of the expression $\qty[\vec{\nabla} \times \qty(\vec{\nabla } \times \vec{A} ) ]_i$ \\ 
+Using $\delta ,\epsilon $, and Einstein sum, we can simplify, this expression as:
+
 \begin{align*}
-  \vec{\nabla} \cdot  E &= \frac{\rho}{\epsilon_0} \tag{1}\\ 
-  \vec{\nabla}  \times  \vec{B} - \frac{1}{c^2} \pdv{\vec{E}}{t} &= \mu_0 \vec{J} \tag{2}
-\end{align*}
-Taking the gradient for both sides of equation $(2)$ gives:
-\begin{equation*}
-  \vec{\nabla } \cdot (\vec{\nabla } \times  \vec{B} )- \frac{1}{c^2}\pdv{t}\vec{\nabla }\cdot \vec{E}  = \mu_0 \vec{\nabla} \cdot  \vec{J} \tag{3}
-\end{equation*}
-Note that you can exchange the order of time derivative and gradient.\\ 
-Combine equation $(3)$ and equation $(1)$, using the identity that $\vec{\nabla} \cdot (\vec{\nabla } \times \vec{B}) = 0 $:
-\begin{equation*}
-  - \frac{1}{c^2 \epsilon_0 \mu_0} \pdv{\rho}{t} =  \vec{\nabla} \cdot \vec{J}    \to \pdv{\rho}{t} + \vec{\nabla}\cdot \vec{J}= 0  
-\end{equation*}
+  \qty[\vec{\nabla } \times \qty(\vec{\nabla}\times  \vec{A} )]_i &= \epsilon_{ijk}\partial_j\qty(\vec{\nabla }\times \vec{A}  )_k \\ 
+                                                                  &= \epsilon_{ijk}\partial_j\qty(\epsilon_{klm}\partial_l A_m) \\ 
+                                                                  &=\epsilon_{kij} \epsilon_{klm}\partial_j \partial_l A_m \\ 
+                                                                  &= \qty(\delta_{il} \delta_{jm} - \delta_{im}\delta_{jl}) \partial_j \partial_l A_m \\ 
+                                                                  &= \partial_i \partial_j A_j -\partial_j \partial_j A_i 
+ \end{align*}
+ Doing so for other components will revleal the relationship that 
+ \begin{equation*}
+ \vec{\nabla} \times  (\nabla \times \vec{A}) = \vec{\nabla } (\vec{\nabla }\cdot A ) - \laplacian A
+ \end{equation*}
+ 
+
 
 
 
